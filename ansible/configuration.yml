@@ -1,0 +1,18 @@
+---
+
+- name: Install Raddit dependencies
+  hosts: raddit-app
+  tasks:
+    - name: Install ruby
+      apt:
+    	name: ruby
+    	state: present
+    - name: Install mongodb    
+      apt:
+    	name: mongodb
+    	state: present
+    - name: download application raddit gist
+      get_url:
+	url: https://gist.githubusercontent.com/Artemmkin/ce82397cfc69d912df9cd648a8d69bec/raw/7193a36c9661c6b90e7e482d256865f085a853f2/raddit.service
+	dest: /etc/systemd/system/raddit.service
+
